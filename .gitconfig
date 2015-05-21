@@ -1,0 +1,70 @@
+[gui]
+	encoding = utf-8
+[user]
+	name = todesking
+	email = discommunicative@gmail.com
+[core]
+	autocrlf = false
+	excludesfile = ~/dotfiles/.gitignore
+	attributesfile = ~/dotfiles/.gitattributes
+	filemode = false
+	quotepath = false
+[pager]
+	log = diff-highlight | less
+	show = diff-highlight | less
+	diff = diff-highlight | less
+[color]
+	ui = auto
+[alias]
+	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+	a = add
+	a-i = add -i
+	a-p = add -p
+	co = checkout
+	b = branch
+	ba = back
+	bal = back --list
+	bl = for-each-ref --sort=-committerdate --format='%(authordate:iso8601) %(refname:short)' refs/heads/
+	k = !gitk --all --max-count=200 &
+	s = status -sb
+	ci = commit
+	cim = commit -m
+	ciam = commit --amend
+	d = diff
+	dc = diff --cached
+	dis = diff --ignore-space-change
+	dcis = diff --cached --ignore-space-change
+	r-i = rebase -i
+	r-c = rebase --continue
+	r-a = rebase --abort
+	dh- = diff HEAD~
+	dw  = diff --color-words --word-diff-regex='[-a-zA-Z0-9_]+|.'
+	dwc = diff --color-words --word-diff-regex='[-a-zA-Z0-9_]+|.' --cached
+	du  = !git diff "HEAD..$(git upstream-name)"
+	dwu = !git diff --color-words --word-diff-regex='[-a-zA-Z0-9_]+|.' "HEAD..$(git upstream-name)"
+	lu  = !git log "HEAD..$(git upstream-name)"
+	s-l = stash list
+	s-s = stash save
+	f = fetch
+	graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+	g     = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+	l = log
+	l-p = log -p
+	l-s = log --stat
+	s-r = svn rebase
+	pp  = !git fetch && git lu && git du
+	pr = pull --rebase -p
+	ci-initial = commit --allow-empty -m 'initial'
+	push-origin-head = push --set-upstream origin HEAD
+[push]
+	default = upstream
+[filter "media"]
+	clean = git media clean %f
+	smudge = git media smudge %f
+	required = true
+[github]
+	user = todesking
+[merge]
+	conflictstyle = diff3
+[init]
+	templatedir = ~/dotfiles/git_template/
