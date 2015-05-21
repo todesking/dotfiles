@@ -132,11 +132,13 @@ function __my_git_ps1() {
 		local stashes=$(git stash list | wc -l | ruby -e "puts('\$'*ARGF.read.to_i**2)")
 		out=$(echo $out | sed "s/\\$/${stashes}/")
 	fi
-	if [ "$out" != '' ]; then
+	if [ -n "$out" ]; then
 		local BRANCH=$(git rev-parse --abbrev-ref HEAD)
 		local CONFIG="branch.${BRANCH}.message-prefix"
 		local PREFIX=$(git config --get "$CONFIG" || echo '')
-		out="${out} - ${PREFIX}"
+		if [ -n "$PREFIX" ]; then
+			out="${out} - ${PREFIX}"
+		fi
 	fi
 	echo -n $out
 }
