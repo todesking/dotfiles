@@ -57,7 +57,7 @@
 	ci-initial = commit --allow-empty -m 'initial'
 	push-origin-head = push --set-upstream origin HEAD
 	# set commit-message-prefix of current branch
-	cmp = !git config "branch.$(git rev-parse --abbrev-ref HEAD).message-prefix"
+	set-cmp = !git config "branch.$(git rev-parse --abbrev-ref HEAD).message-prefix"
 [push]
 	default = upstream
 [filter "media"]

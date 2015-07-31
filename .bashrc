@@ -156,6 +156,7 @@ $(__show_error_bar)\[\033[31m\]\[$(__show_errorcode_color)\]$(__show_errorcode_s
 export MYSQL_PS1="(\u@\h) [\d] > "
 
 # Alias {{{
+alias :q=exit
 alias g=git
 complete -o bashdefault -o default -o nospace -F _git g
 alias ls='ls -F'
