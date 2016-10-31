@@ -1,0 +1,3 @@
+[submodule "vendor/may-i-paste"]
+	path = vendor/may-i-paste
+	url = https://github.com/harasou/may-i-paste.git
