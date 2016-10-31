@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<root>
+  <list>
+    <item>
+	  <name>c-[ to esc</name>
+      <identifier>private.ctrl_esc</identifier>
+      <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE</autogen>
+    </item>
+    <item>
+	  <name>ESC to backquote</name>
+      <identifier>private.esc_bq</identifier>
+      <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::BACKQUOTE</autogen>
+    </item>
+    <item>
+	  <name>option+iu to PageUp/PageDown</name>
+      <identifier>private.opt_iu_to_pup_pdown</identifier>
+      <autogen>--KeyToKey-- KeyCode::I, VK_OPTION, KeyCode::PAGEUP</autogen>
+      <autogen>--KeyToKey-- KeyCode::U, VK_OPTION, KeyCode::PAGEDOWN</autogen>
+    </item>
+    <item>
+	  <name>option+op to Home/End</name>
+      <identifier>private.opt_op_to_home_end</identifier>
+      <autogen>--KeyToKey-- KeyCode::O, VK_OPTION, KeyCode::HOME</autogen>
+      <autogen>--KeyToKey-- KeyCode::P, VK_OPTION, KeyCode::END</autogen>
+    </item>
+    <item>
+	  <name>Disable command-M</name>
+      <identifier>private.disable_command_m</identifier>
+      <autogen>--KeyToKey-- KeyCode::M, VK_COMMAND, KeyCode::VK_NONE</autogen>
+    </item>
+    <item>
+	  <name>Disable command-H</name>
+      <identifier>private.disable_command_h</identifier>
+      <autogen>--KeyToKey-- KeyCode::H, VK_COMMAND, KeyCode::VK_NONE</autogen>
+    </item>
+  </list>
+</root>
