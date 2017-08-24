@@ -1,3 +1,5 @@
+# vim:set foldmethod=marker:
+
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
@@ -135,7 +137,7 @@ function __my_git_ps1() {
 	if [ -n "$out" ]; then
 		local BRANCH=$(git rev-parse --abbrev-ref HEAD)
 		local CONFIG="branch.${BRANCH}.message-prefix"
-		local PREFIX=$(git config --get "$CONFIG" || echo '')
+		local PREFIX="$(git config --get "$CONFIG" || echo)"
 		if [ -n "$PREFIX" ]; then
 			out="${out} - ${PREFIX}"
 		fi
@@ -151,6 +153,7 @@ export PS1='
 $(__show_error_bar)\[\033[31m\]\[$(__show_errorcode_color)\]$(__show_errorcode_symbol)\[\033[0m\] \[\033[33m\]\w$(__my_vcs_ps1)\[\033[0m\]$(__show_jobs)
 \[\033[31m\]$(__show_warning_message)\[\033[32m\][$(date +"%m-%d %H:%M:%S")]\[\033[0m\] § '
 
+# "
 # }}}
 
 export MYSQL_PS1="(\u@\h) [\d] > "
@@ -173,6 +176,7 @@ alias s='svn'
 alias t='screen -X title'
 alias re='rbenv'
 complete -F _rbenv re
+alias mi='mv -i'
 # }}}
 
 complete -d cd
