@@ -1,3 +1,6 @@
 [submodule "vendor/may-i-paste"]
 	path = vendor/may-i-paste
 	url = https://github.com/harasou/may-i-paste.git
+[submodule "vendor/git"]
+	path = vendor/git
+	url = git@github.com:git/git.git
