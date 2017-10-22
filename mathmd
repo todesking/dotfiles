@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+if [ $# != 2 ]; then
+	echo USAGE: mathmd in.md out.html
+	exit 1
+fi
+
+basedir=$(cd $(dirname $0) && pwd -P)
+datadir="$HOME/dotfiles/mathmd.d" # TODO: OOPS
+
+pandoc --mathjax=pandoc --self-contained -s --mathjax="$datadir/dynoload.js" --self-contained -c "$datadir/github.css"  "$1" -o "$2"
