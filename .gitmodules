@@ -4,3 +4,6 @@
 [submodule "vendor/git"]
 	path = vendor/git
 	url = git@github.com:git/git.git
+[submodule "vendor/powerline-fonts"]
+	path = vendor/powerline-fonts
+	url = git@github.com:powerline/fonts.git
