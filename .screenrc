@@ -14,6 +14,7 @@ bind k prev
 bind j next
 bind l windowlist
 bind \\ quit
+bind ^l eval "clear" "scrollback 0" "scrollback 10000"
 multiuser on
 term xterm-256color
 bell_msg "Bell in window %"
