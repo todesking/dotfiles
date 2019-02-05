@@ -47,8 +47,6 @@
 --languages=-Lua
 --languages=-Make
 --languages=-MatLab
---languages=-ObjC
---languages=-ObjC++
 --languages=-Pascal
 --languages=-Perl
 --languages=-PHP
