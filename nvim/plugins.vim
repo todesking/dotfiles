@@ -97,7 +97,7 @@ call s:add() " }}}
 
 let s:repo = 'Shougo/neomru.vim'
 function! s:hooks.post_source() abort
-    nnoremap <silent> <C-S> :Denite file_mru<CR>
+    nnoremap <silent> <C-S> :Denite file_mru -start-filter<CR>
 endfunction
 call s:add()
 
@@ -161,13 +161,24 @@ call s:add()
 
 let s:repo = 'prabirshrestha/vim-lsp'
 function! s:hooks.post_source() abort " {{{
-	if executable('clangd')
-		au User lsp_setup call lsp#register_server({
-			\ 'name': 'clangd',
-			\ 'cmd': {server_info->['clangd']},
-			\ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-			\ })
-	endif
+	augroup vimrc-vim-lsp
+		autocmd!
+		if executable('clangd')
+			au User lsp_setup call lsp#register_server({
+				\ 'name': 'clangd',
+				\ 'cmd': {server_info->['clangd']},
+				\ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+				\ })
+		endif
+		if executable('metals-vim')
+			au User lsp_setup call lsp#register_server({
+				\ 'name': 'metals',
+				\ 'cmd': {server_info->['metals-vim']},
+				\ 'initialization_options': { 'rootPatterns': 'build.sbt' },
+				\ 'whitelist': ['sbt', 'scala'],
+				\ })
+		endif
+	augroup END
 	let g:lsp_signs_enabled = 1         " enable signs
 	let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
 	let g:lsp_signs_error = {'text': '✗'}
