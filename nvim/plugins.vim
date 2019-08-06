@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 function! s:add() abort " {{{
     let opts = {}
     exec 'Plugin ''' . s:repo . ''''
@@ -212,6 +214,10 @@ endfunction " }}}
 call s:add()
 endif
 
+" NOTE: Use release branch
+let s:repo = 'neoclide/coc.nvim'
+call s:add()
+
 let s:repo = 'w0rp/ale'
 function! s:hooks.post_source() abort " {{{
 	let g:ale_lint_on_text_changed = v:false
@@ -238,7 +244,7 @@ function! s:hooks.post_source() abort " {{{
 	let g:lightline = {
 				\ 'active': {
 				\   'left': [['project_component'], ['path_component']],
-				\   'right': [['lineinfo'], ['fileformat', 'fileencoding', 'filetype'], ['build_status', 'charinfo'] ],
+				\   'right': [['cocstatus', 'lineinfo'], ['fileformat', 'fileencoding', 'filetype'], ['build_status', 'charinfo'] ],
 				\ },
 				\ 'inactive': {
 				\   'left': [['project_name', 'git_branch'], ['path_component']],
@@ -253,6 +259,7 @@ function! s:hooks.post_source() abort " {{{
 				\ },
 				\ 'component_function': {
 				\   'git_branch': 'Vimrc_statusline_git_branch',
+				\   'cocstatus': 'coc#status',
 				\ },
 				\ }
 	" }}}
@@ -263,6 +270,8 @@ function! s:hooks.post_source() abort " {{{
 	let g:lightline['component']['project_component'] =
 				\ g:lightline['component']['project_name'].
 				\ '%{Vimrc_statusline_git_branch()}'
+	let g:lightline['component']['coc_build_status'] =
+				\ '%{coc#status()}'
 	if has('gui_vimr')
 		let g:lightline['separator'] = { 'left': '', 'right': '' }
 		let g:lightline['subseparator'] = { 'left': '', 'right': '' }
@@ -318,6 +327,9 @@ endfunction " }}}
 call s:add()
 
 let s:repo = 'tyru/capture.vim'
+call s:add()
+
+let s:repo = 'derekwyatt/vim-scala'
 call s:add()
 
 

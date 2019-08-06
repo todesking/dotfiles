@@ -92,8 +92,8 @@ nnoremap <silent><S-D-{> :tabprevious<CR>
 nnoremap <silent>,H :tabmove -1<CR>
 nnoremap <silent>,L :tabmove +1<CR>
 nnoremap <silent>y= :<C-U>call setreg("*", getreg("0"))<CR>:<C-U>echo "yanked to *: " . getreg("*")[0:30]<CR>
-nnoremap j gj
-nnoremap k gk
+nnoremap <silent>j gj
+nnoremap <silent>k gk
 
 imap <D-Space> <Space>
 inoremap <C-E> <END>
