@@ -1,2 +1,2 @@
-colorscheme flatland
 set background=dark
+colorscheme iceberg
