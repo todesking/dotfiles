@@ -87,6 +87,8 @@ nnoremap <C-B> :<C-U>up<CR>
 nnoremap <silent>,n :tabnew<CR>
 nnoremap <silent>H :tabprevious<CR>
 nnoremap <silent>L :tabnext<CR>
+nnoremap <silent><S-D-}> :tabnext<CR>
+nnoremap <silent><S-D-{> :tabprevious<CR>
 nnoremap <silent>,H :tabmove -1<CR>
 nnoremap <silent>,L :tabmove +1<CR>
 nnoremap <silent>y= :<C-U>call setreg("*", getreg("0"))<CR>:<C-U>echo "yanked to *: " . getreg("*")[0:30]<CR>

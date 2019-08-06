@@ -47,26 +47,39 @@ function! s:hooks.post_source() abort " {{{
     augroup vimrc-denite
         autocmd!
         autocmd FileType denite call s:denite_my_settings()
-		autocmd FileType denite call s:denite_my_syntax()
         autocmd FileType denite-filter call s:denite_filter_my_settings()
 	augroup END
 
     call denite#custom#option('_', 'direction', 'topleft')
 
     call denite#custom#source(
-        \ 'file_rec,file_mru,project_file_mru',
+        \ 'file/rec,file_mru,project_file_mru',
         \ 'converters',
         \ ['converter/project_name', 'converter/mark_dup']
         \ )
+	call denite#custom#source(
+		\ 'file_rec,file_mru,project_file_mru,unite,tag',
+		\ 'matchers',
+		\ ['matcher/substring']
+		\ )
 
     call denite#custom#var(
-        \ 'file_rec',
+        \ 'file/rec',
         \ 'command',
         \ [expand('~/.vim/bin/list_file_rec')]
         \ )
-
-    nnoremap <C-Q><C-P> :<C-u>Denite -resume -cursor-pos=-1 -immediately<CR>
-    nnoremap <C-Q><C-N> :<C-u>Denite -resume -cursor-pos=+1 -immediately<CR>
+	" keys {{{
+	nnoremap <silent><C-Q>  <ESC>
+	nnoremap <silent><C-S> :<C-u>call Vimrc_denite_mru_if_available()<CR>
+	nnoremap <silent><C-Q>s :<C-u>Denite file_mru -start-filter<CR>
+	nnoremap <silent><C-Q>u :Denite -resume<CR>
+	nnoremap <silent><C-Q>P :<C-u>exec 'Denite file/rec:' . current_project#info(expand('%')).main_path . ' -start-filter'<CR>
+	nnoremap <silent><C-Q>p :<C-u>exec 'Denite file/rec:' . current_project#info(expand('%')).sub_path . ' -start-filter'<CR>
+	nnoremap <silent><C-Q>b :<C-u>Denite buffer<CR>
+	nnoremap <silent><C-Q>o :<C-u>Denite unite:outline -start-filter<CR>
+	nnoremap <silent><C-Q><C-P> :<C-u>Denite -resume -cursor-pos=-1 -immediately<CR>
+	nnoremap <silent><C-Q><C-N> :<C-u>Denite -resume -cursor-pos=+1 -immediately<CR>
+	" }}}
 endfunction " }}}
 
 function! s:denite_my_settings() abort " {{{
@@ -86,19 +99,30 @@ function! s:denite_filter_my_settings() abort " {{{
     inoremap <silent><buffer> <C-n> <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
     inoremap <silent><buffer> <C-p> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
 endfunction " }}}
-function! s:denite_my_syntax() abort " {{{
-	syntax region MyDeniteUnimportant matchgroup=MyDeniteConceal excludenl start=/\V{{{/ end=/\V}}}/ concealends
-		\ containedin=deniteSource_file_rec,deniteSource_file_mru,deniteSource_project_file_mru
-	highlight link MyDeniteUnimportant Comment
-	setlocal concealcursor+=i
+function! Vimrc_denite_mru_if_available() abort " {{{
+	let info = current_project#info()
+	if empty(info.name)
+		Denite file_mru -start-filter
+	else
+		exec 'Denite project_file_mru:' . info.path . ' -start-filter'
+	endif
 endfunction " }}}
-
 call s:add() " }}}
+
+let s:repo = 'Shougo/unite.vim'
+call s:add()
 
 let s:repo = 'Shougo/neomru.vim'
 function! s:hooks.post_source() abort
-    nnoremap <silent> <C-S> :Denite file_mru -start-filter<CR>
 endfunction
+call s:add()
+
+let s:repo = 'Shougo/unite-outline'
+function! s:hooks.post_source() abort " {{{
+	let g:unite_source_outline_scala_show_all_declarations = 1
+	let g:unite_source_outline_max_headings = 10000
+	let g:unite_source_outline_cache_limit = 10000
+endfunction " }}}
 call s:add()
 
 let s:repo = 'kana/vim-textobj-user'
@@ -159,6 +183,7 @@ call s:add()
 let s:repo = 'prabirshrestha/async.vim'
 call s:add()
 
+if 0
 let s:repo = 'prabirshrestha/vim-lsp'
 function! s:hooks.post_source() abort " {{{
 	augroup vimrc-vim-lsp
@@ -183,6 +208,14 @@ function! s:hooks.post_source() abort " {{{
 	let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
 	let g:lsp_signs_error = {'text': '✗'}
 	let g:lsp_signs_warning = {'text': '‼'}
+endfunction " }}}
+call s:add()
+endif
+
+let s:repo = 'w0rp/ale'
+function! s:hooks.post_source() abort " {{{
+	let g:ale_lint_on_text_changed = v:false
+	let g:ale_lint_on_insert_leave = v:false
 endfunction " }}}
 call s:add()
 
@@ -284,8 +317,9 @@ function! s:hooks.post_source() abort " {{{
 endfunction " }}}
 call s:add()
 
+let s:repo = 'tyru/capture.vim'
+call s:add()
 
-Plugin 'tyrannicaltoucan/vim-deep-space'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'sickill/vim-monokai'
-Plugin 'cocopon/iceberg.vim'
+
+let s:repo = 'cocopon/iceberg.vim'
+call s:add()
