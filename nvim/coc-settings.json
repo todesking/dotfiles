@@ -13,4 +13,7 @@
   },
   "suggest.floatEnable": true,
   "diagnostic.messageTarget": "echo",
+  // "diagnostic.displayByAle": true,
+  "codeLens.enable": true,
+  "coc.preferences.extensionUpdateCheck": "never",
 }
