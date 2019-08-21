@@ -188,15 +188,15 @@ function! s:toggle_folding(deep)
 		return
 	elseif foldclosed(line('.'))==-1
 		if a:deep
-			normal zC
+			normal! zC
 		else
-			normal zc
+			normal! zc
 		endif
 	else
 		if a:deep
-			normal zO
+			normal! zO
 		else
-			normal zo
+			normal! zo
 		endif
 	end
 endfunction
