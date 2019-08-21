@@ -60,7 +60,7 @@ function! s:hooks.post_source() abort " {{{
         \ ['converter/project_name', 'converter/mark_dup']
         \ )
 	call denite#custom#source(
-		\ 'file_rec,file_mru,project_file_mru,unite,tag',
+		\ 'file_rec,file/rec,file_mru,file/mru,project_file_mru,unite,tag',
 		\ 'matchers',
 		\ ['matcher/substring']
 		\ )
