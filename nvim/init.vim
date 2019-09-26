@@ -1,3 +1,4 @@
+scriptencoding utf-8
 " Vundle {{{
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -55,6 +56,7 @@ augroup END
 
 " status
 set number
+set showtabline=2
 
 " key
 set notimeout
@@ -74,6 +76,10 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set formatoptions-=cro
+
+augroup vimrc-checktime
+    au FocusGained * checktime
+augroup END
 
 " buffer
 set hidden

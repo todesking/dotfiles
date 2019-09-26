@@ -219,16 +219,27 @@ let s:repo = 'neoclide/coc.nvim'
 function! s:hooks.post_source() abort " {{{
 	nmap <C-.> :CocNext<CR>
 	nmap <C-,> :CocPrev<CR>
+	nnoremap <silent><expr> ,d <SID>coc_toggle_diagnostic()
 	inoremap <silent><expr> <Tab>
 		\ pumvisible() ? "\<C-n>" :
 		\ <SID>check_back_space() ? "\<Tab>" :
 		\ coc#refresh()
 	inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+	hi link CocErrorVirtualText Error
 endfunction " }}}
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+function! s:coc_toggle_diagnostic() abort " {{{
+	let k = 'diagnostic.enable'
+	let x = !has_key(g:coc_user_config, k) || g:coc_user_config[k]
+	call coc#config(k, !x)
+	doautocmd InsertEnter
+	doautocmd InsertLeave
+	doautocmd CursorMoved
+	echo 'diagnostic ' . (x ? 'off' : 'on')
+endfunction " }}}
 
 call s:add()
 
