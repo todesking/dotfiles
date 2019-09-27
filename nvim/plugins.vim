@@ -79,6 +79,8 @@ function! s:hooks.post_source() abort " {{{
 	nnoremap <silent><C-Q>p :<C-u>exec 'Denite file/rec:' . current_project#info(expand('%')).sub_path . ' -start-filter'<CR>
 	nnoremap <silent><C-Q>b :<C-u>Denite buffer<CR>
 	nnoremap <silent><C-Q>o :<C-u>Denite unite:outline -start-filter<CR>
+	nnoremap <silent><C-Q>d :<C-u>Denite coc-diagnostic<CR>
+
 	nnoremap <silent><C-Q><C-P> :<C-u>Denite -resume -cursor-pos=-1 -immediately<CR>
 	nnoremap <silent><C-Q><C-N> :<C-u>Denite -resume -cursor-pos=+1 -immediately<CR>
 	" }}}
@@ -217,8 +219,7 @@ endif
 " NOTE: Use release branch
 let s:repo = 'neoclide/coc.nvim'
 function! s:hooks.post_source() abort " {{{
-	nmap <C-.> :CocNext<CR>
-	nmap <C-,> :CocPrev<CR>
+	nmap <silent> gd <Plug>(coc-definition)
 	nnoremap <silent><expr> ,d <SID>coc_toggle_diagnostic()
 	inoremap <silent><expr> <Tab>
 		\ pumvisible() ? "\<C-n>" :
@@ -232,16 +233,20 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 function! s:coc_toggle_diagnostic() abort " {{{
-	let k = 'diagnostic.enable'
-	let x = !has_key(g:coc_user_config, k) || g:coc_user_config[k]
-	call coc#config(k, !x)
+	let k = 'diagnostic.messageTarget'
+	let x = has_key(g:coc_user_config, k) ? g:coc_user_config[k] : 'float'
+	let y = x ==# 'float' ? 'echo' : 'float'
+	call coc#config(k, y)
 	doautocmd InsertEnter
 	doautocmd InsertLeave
 	doautocmd CursorMoved
-	echo 'diagnostic ' . (x ? 'off' : 'on')
+	echo 'diagnostic: ' . y
 endfunction " }}}
-
 call s:add()
+
+let s:repo = 'neoclide/coc-denite'
+call s:add()
+
 
 let s:repo = 'w0rp/ale'
 function! s:hooks.post_source() abort " {{{
