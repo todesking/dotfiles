@@ -74,13 +74,14 @@ function! s:hooks.post_source() abort " {{{
 	nnoremap <silent><C-Q>  <ESC>
 	nnoremap <silent><C-S> :<C-u>call Vimrc_denite_mru_if_available()<CR>
 	nnoremap <silent><C-Q>s :<C-u>Denite file_mru -start-filter<CR>
-	nnoremap <silent><C-Q>u :Denite -resume<CR>
 	nnoremap <silent><C-Q>P :<C-u>exec 'Denite file/rec:' . current_project#info(expand('%')).main_path . ' -start-filter'<CR>
 	nnoremap <silent><C-Q>p :<C-u>exec 'Denite file/rec:' . current_project#info(expand('%')).sub_path . ' -start-filter'<CR>
 	nnoremap <silent><C-Q>b :<C-u>Denite buffer<CR>
+	nnoremap <silent><C-Q>c :<C-u>exec 'Denite file_rec:'.expand('%:p:h').'/'<CR>
 	nnoremap <silent><C-Q>o :<C-u>Denite unite:outline -start-filter<CR>
 	nnoremap <silent><C-Q>d :<C-u>Denite coc-diagnostic<CR>
 
+	nnoremap <silent><C-Q>u :Denite -resume<CR>
 	nnoremap <silent><C-Q><C-P> :<C-u>Denite -resume -cursor-pos=-1 -immediately<CR>
 	nnoremap <silent><C-Q><C-N> :<C-u>Denite -resume -cursor-pos=+1 -immediately<CR>
 	" }}}

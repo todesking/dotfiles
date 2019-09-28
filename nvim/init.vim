@@ -88,6 +88,7 @@ set noswapfile
 
 " misc
 set helplang=en,ja
+set lazyredraw
 
 " keymap
 nnoremap <C-B> :<C-U>up<CR>

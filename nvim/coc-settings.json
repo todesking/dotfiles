@@ -14,6 +14,7 @@
   "suggest.floatEnable": true,
   "suggest.enablePreview": true,
   "suggest.maxPreviewWidth": 120,
+  "diagnostic.refreshOnInsertMode": false,
   "diagnostic.checkCurrentLine": true,
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": "// !!! ",
