@@ -2,3 +2,4 @@ tags
 vendor
 .metals
 .bloop
+__pycache__
