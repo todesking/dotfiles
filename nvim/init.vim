@@ -53,6 +53,21 @@ augroup vimrc-incsearch-highlight
 	autocmd CmdlineEnter /,\? :set hlsearch
 	autocmd CmdlineLeave /,\? :set nohlsearch
 augroup END
+augroup vimrc-full-screen-help " {{{
+	autocmd!
+	autocmd BufEnter * call Vimrc_full_screen_help()
+	autocmd FileType * call Vimrc_full_screen_help()
+	function! Vimrc_full_screen_help() abort
+		if  &ft =~# '^\(help\|ref-.*\)$' && winnr() == 1 && winnr('$') == 2 && bufname(winbufnr(2)) == ''
+			try
+				" This will throw E788, cause unknown
+				execute "normal \<C-W>o"
+			catch
+			endtry
+		endif
+	endfunction
+augroup END " }}}
+
 
 " status
 set number
@@ -64,6 +79,7 @@ set nottimeout
 
 " cmd mode
 set wildmode=list:longest
+set wildignorecase
 set history=500
 
 " ins mode

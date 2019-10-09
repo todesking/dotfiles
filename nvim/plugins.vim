@@ -19,7 +19,7 @@ let s:hooks = {}
 
 let s:repo = 'Shougo/deoplete.nvim'
 function! s:hooks.post_source() abort
-    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#enable_at_startup = 0
     augroup vimrc-deoplete
         autocmd!
         autocmd FileType denite-filter call deoplete#custom#buffer_option('auto_complete', v:false)
@@ -77,7 +77,7 @@ function! s:hooks.post_source() abort " {{{
 	nnoremap <silent><C-Q>P :<C-u>exec 'Denite file/rec:' . current_project#info(expand('%')).main_path . ' -start-filter'<CR>
 	nnoremap <silent><C-Q>p :<C-u>exec 'Denite file/rec:' . current_project#info(expand('%')).sub_path . ' -start-filter'<CR>
 	nnoremap <silent><C-Q>b :<C-u>Denite buffer<CR>
-	nnoremap <silent><C-Q>c :<C-u>exec 'Denite file_rec:'.expand('%:p:h').'/'<CR>
+	nnoremap <silent><C-Q>c :<C-u>exec 'Denite file/rec:'.expand('%:p:h').'/'<CR>
 	nnoremap <silent><C-Q>o :<C-u>Denite unite:outline -start-filter<CR>
 	nnoremap <silent><C-Q>d :<C-u>Denite coc-diagnostic<CR>
 
@@ -119,6 +119,7 @@ call s:add()
 
 let s:repo = 'Shougo/neomru.vim'
 function! s:hooks.post_source() abort
+	let g:neomru#directory_mru_ignore_pattern = g:neomru#directory_mru_ignore_pattern . '\|\%(.metals\)' 
 endfunction
 call s:add()
 
@@ -175,6 +176,19 @@ function! s:hooks.post_source() abort " {{{
 endfunction " }}}
 call s:add()
 
+let s:repo = 'LeafCage/yankround.vim'
+function! s:hooks.post_source() abort " {{{
+	nmap p <Plug>(yankround-p)
+	xmap p <Plug>(yankround-p)
+	nmap P <Plug>(yankround-P)
+	nmap gp <Plug>(yankround-gp)
+	xmap gp <Plug>(yankround-gp)
+	nmap gP <Plug>(yankround-gP)
+	nmap <C-p> <Plug>(yankround-prev)
+	nmap <C-n> <Plug>(yankround-next)
+endfunction " }}}
+call s:add()
+
 let s:repo = 'Shougo/neosnippet.vim'
 function! s:hooks.post_source() abort " {{{
 	let g:neosnippet#disable_runtime_snippets = {
@@ -220,7 +234,9 @@ endif
 " NOTE: Use release branch
 let s:repo = 'neoclide/coc.nvim'
 function! s:hooks.post_source() abort " {{{
-	nmap <silent> gd <Plug>(coc-definition)
+	nnoremap <silent> gd :<C-u>exec "normal \<Plug>(coc-definition)"<CR>
+	nnoremap <silent> gr :<C-u>exec "normal \<Plug>(coc-references)"<CR>
+	nnoremap <silent> gh :<C-u>call CocAction('doHover')<CR>
 	nnoremap <silent><expr> ,d <SID>coc_toggle_diagnostic()
 	inoremap <silent><expr> <Tab>
 		\ pumvisible() ? "\<C-n>" :
@@ -228,6 +244,12 @@ function! s:hooks.post_source() abort " {{{
 		\ coc#refresh()
 	inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 	hi link CocErrorVirtualText Error
+	hi link CocWarnVirtualText Comment
+	let g:coc_enable_locationlist = 0
+	augroup Vimrc_coc
+		autocmd!
+		autocmd User CocLocationsChange Denite coc-jump-locations
+	augroup END
 endfunction " }}}
 function! s:check_back_space() abort
   let col = col('.') - 1
