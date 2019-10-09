@@ -9,7 +9,7 @@ def decompose(a, b):
 
 class Filter(Base):
     def __init__(self, vim):
-        super().__init__(vim)
+        super(Filter, self).__init__(vim)
 
         self.name = 'converter/mark_dup'
         self.description = 'mark duplicated part'
@@ -17,7 +17,9 @@ class Filter(Base):
     def filter(self, context):
         prev = []
         for candidate in context['candidates']:
-            cur = (candidate['abbr'] if 'abbr' in candidate else candidate['word']).split('/')
+            orig = candidate.get('mark_dup__orig') or candidate.get('abbr') or candidate['word']
+            candidate['mark_dup__orig'] = orig
+            cur = orig.split('/')
             prefix, a, _ = decompose(cur, prev)
             if prefix != []:
                 candidate['abbr'] = '{{{' + '/'.join(prefix) + '}}}/' + '/'.join(a)
