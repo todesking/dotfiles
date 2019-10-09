@@ -202,6 +202,9 @@ call s:add()
 let s:repo = 'prabirshrestha/async.vim'
 call s:add()
 
+let s:repo = 'tyru/caw.vim'
+call s:add()
+
 if 0
 let s:repo = 'prabirshrestha/vim-lsp'
 function! s:hooks.post_source() abort " {{{
