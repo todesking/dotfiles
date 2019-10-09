@@ -114,6 +114,9 @@ function! Vimrc_denite_mru_if_available() abort " {{{
 endfunction " }}}
 call s:add() " }}}
 
+let s:repo = 'chemzqm/unite-location'
+call s:add()
+
 let s:repo = 'Shougo/unite.vim'
 call s:add()
 
