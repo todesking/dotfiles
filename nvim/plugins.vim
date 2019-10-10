@@ -95,6 +95,7 @@ function! s:denite_my_settings() abort " {{{
   nnoremap <silent><buffer><expr> <ESC> denite#do_map('quit')
   nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
   nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+  BrightestLock
 endfunction " }}}
 function! s:denite_filter_my_settings() abort " {{{
     imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
@@ -103,6 +104,7 @@ function! s:denite_filter_my_settings() abort " {{{
     imap <silent><buffer><expr> <C-N> denite#do_map('do_action')
     inoremap <silent><buffer> <C-n> <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
     inoremap <silent><buffer> <C-p> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
+	BrightestLock
 endfunction " }}}
 function! Vimrc_denite_mru_if_available() abort " {{{
 	let info = current_project#info()
