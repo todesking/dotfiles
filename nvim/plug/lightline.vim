@@ -68,10 +68,10 @@ scriptencoding utf-8
 		call throttle#entered('b', throttle_key, s)
 		return s
 	endfunction " }}}
-	function! GetB()
+	function! GetB() abort
 		let c = matchstr(getline('.'), '.', col('.') - 1)
-		if &encoding != &fencoding
-			let c = iconv(c, &encoding, &fencoding)
+		if &encoding != &fileencoding
+			let c = iconv(c, &encoding, &fileencoding)
 		endif
 		return String2Hex(c)
 	endfunction

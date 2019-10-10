@@ -33,6 +33,7 @@
 	nnoremap <silent><C-Q>c :<C-u>exec 'Denite file/rec:'.expand('%:p:h').'/'<CR>
 	nnoremap <silent><C-Q>o :<C-u>Denite unite:outline -start-filter<CR>
 	nnoremap <silent><C-Q>d :<C-u>Denite coc-diagnostic<CR>
+	nnoremap <silent><C-Q>l :<C-u>Denite -auto-action=preview location_list<CR>
 
 	nnoremap <silent><C-Q>u :Denite -resume<CR>
 	nnoremap <silent><C-Q><C-P> :<C-u>Denite -resume -cursor-pos=-1 -immediately<CR>
