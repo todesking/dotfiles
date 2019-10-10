@@ -14,24 +14,36 @@ function! s:load_plugin_config() abort " {{{
 			endif
 		endfor
 	endfor
+	echom string(plugins)
 	for p in plugins
 		execute "Plugin '" . p . "'"
 	endfor
 endfunction " }}}
 function! s:plugin_post_source() abort " {{{
+	return
 	for src in s:plugin_config_files
 		execute 'source ' . src
 	endfor
 endfunction " }}}
 
 " Vundle {{{
-filetype off
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
 set runtimepath+=~/.cache/nvim-vundle/Vundle.vim
 call vundle#begin('~/.cache/nvim-vundle/')
+
+" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+
 call s:load_plugin_config()
-call vundle#end()
-filetype plugin indent on
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
 " }}}
 
 call s:plugin_post_source()

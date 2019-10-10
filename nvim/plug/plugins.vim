@@ -1,51 +1,25 @@
-scriptencoding utf-8
-
-function! s:add() abort " {{{
-    let opts = {}
-    exec 'Plugin ''' . s:repo . ''''
-    let s:repo = ''
-    call s:add_hook()
-endfunction " }}}
-
-function! s:add_hook() abort
-    if has_key(s:hooks, 'post_source')
-        call add(g:plugin_hooks, s:hooks.post_source)
-    endif
-    let s:hooks = {}
-endfunction
-
-let s:repo = ''
-let s:hooks = {}
-
-let s:repo = 'Shougo/deoplete.nvim'
-function! s:hooks.post_source() abort
+" Plug: Shougo/deoplete.nvim {{{
     let g:deoplete#enable_at_startup = 0
     augroup vimrc-deoplete
         autocmd!
         autocmd FileType denite-filter call deoplete#custom#buffer_option('auto_complete', v:false)
     augroup END
-endfunction
-call s:add()
+" }}}
 
-let s:repo = 'cespare/vim-toml'
-call s:add()
+" Plug: cespare/vim-toml {{{
+" }}}
 
-let s:repo = 'todesking/current_project.vim'
-function! s:hooks.post_source() abort " {{{
+" Plug: todesking/current_project.vim {{{
 	" e-in-current-project
 	command! -complete=customlist,current_project#complete -nargs=1 Pe :exec ':e ' . current_project#info().path . '/' . "<args>"
 	command! -complete=customlist,current_project#complete_main -nargs=1 PE :exec ':e ' . current_project#info().main_path . '/' . "<args>"
-endfunction " }}}
-call s:add()
+" }}}
 
 
-let s:repo = 'osyo-manga/vim-brightest'
-function! s:hooks.post_source()
-endfunction
-call s:add()
+" Plug: osyo-manga/vim-brightest {{{
+" }}}
 
-let s:repo = 'Shougo/denite.nvim' " {{{
-function! s:hooks.post_source() abort " {{{
+" Plug: Shougo/denite.nvim {{{
     augroup vimrc-denite
         autocmd!
         autocmd FileType denite call s:denite_my_settings()
@@ -85,59 +59,53 @@ function! s:hooks.post_source() abort " {{{
 	nnoremap <silent><C-Q><C-P> :<C-u>Denite -resume -cursor-pos=-1 -immediately<CR>
 	nnoremap <silent><C-Q><C-N> :<C-u>Denite -resume -cursor-pos=+1 -immediately<CR>
 	" }}}
-endfunction " }}}
 
-function! s:denite_my_settings() abort " {{{
-  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q denite#do_map('quit')
-  nnoremap <silent><buffer><expr> <ESC> denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
-  BrightestLock
-endfunction " }}}
-function! s:denite_filter_my_settings() abort " {{{
-    imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
-    imap <silent><buffer> <ESC> <Plug>(denite_filter_quit)
-    imap <silent><buffer><expr> <CR> denite#do_map('do_action')
-    imap <silent><buffer><expr> <C-N> denite#do_map('do_action')
-    inoremap <silent><buffer> <C-n> <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
-    inoremap <silent><buffer> <C-p> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
-	BrightestLock
-endfunction " }}}
-function! Vimrc_denite_mru_if_available() abort " {{{
-	let info = current_project#info()
-	if empty(info.name)
-		Denite file_mru -start-filter
-	else
-		exec 'Denite project_file_mru:' . info.path . ' -start-filter'
-	endif
-endfunction " }}}
-call s:add() " }}}
+	function! s:denite_my_settings() abort " {{{
+	  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+	  nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
+	  nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+	  nnoremap <silent><buffer><expr> q denite#do_map('quit')
+	  nnoremap <silent><buffer><expr> <ESC> denite#do_map('quit')
+	  nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+	  nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+	  BrightestLock
+	endfunction " }}}
+	function! s:denite_filter_my_settings() abort " {{{
+		imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+		imap <silent><buffer> <ESC> <Plug>(denite_filter_quit)
+		imap <silent><buffer><expr> <CR> denite#do_map('do_action')
+		imap <silent><buffer><expr> <C-N> denite#do_map('do_action')
+		inoremap <silent><buffer> <C-n> <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
+		inoremap <silent><buffer> <C-p> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
+		BrightestLock
+	endfunction " }}}
+	function! Vimrc_denite_mru_if_available() abort " {{{
+		let info = current_project#info()
+		if empty(info.name)
+			Denite file_mru -start-filter
+		else
+			exec 'Denite project_file_mru:' . info.path . ' -start-filter'
+		endif
+	endfunction " }}}
+" }}}
 
-let s:repo = 'chemzqm/unite-location'
-call s:add()
+" Plug: chemzqm/unite-location {{{
+" }}}
 
-let s:repo = 'Shougo/unite.vim'
-call s:add()
+" Plug: Shougo/unite.vim {{{
+" }}}
 
-let s:repo = 'Shougo/neomru.vim'
-function! s:hooks.post_source() abort
+" Plug: Shougo/neomru.vim {{{
 	let g:neomru#directory_mru_ignore_pattern = g:neomru#directory_mru_ignore_pattern . '\|\%(.metals\)' 
-endfunction
-call s:add()
+" }}}
 
-let s:repo = 'Shougo/unite-outline'
-function! s:hooks.post_source() abort " {{{
+" Plug: Shougo/unite-outline {{{
 	let g:unite_source_outline_scala_show_all_declarations = 1
 	let g:unite_source_outline_max_headings = 10000
 	let g:unite_source_outline_cache_limit = 10000
-endfunction " }}}
-call s:add()
+" }}}
 
-let s:repo = 'kana/vim-textobj-user'
-function! s:hooks.post_source() abort " {{{
+" Plug: kana/vim-textobj-user {{{
 	call textobj#user#plugin('lastmofified', {
 	\   'lastmodified': {
 	\     'select-a': 'al',
@@ -147,42 +115,34 @@ function! s:hooks.post_source() abort " {{{
 	function! g:Vimrc_select_a_last_modified() abort
 		return ['v', getpos("'["), getpos("']")]
 	endfunction
-endfunction " }}}
-cal s:add()
+" }}}
 
-let s:repo = 'kana/vim-operator-user'
-call s:add()
+" Plug: kana/vim-operator-user {{{
+" }}}
 
-let s:repo = 'rhysd/vim-operator-surround'
-function! s:hooks.post_source() abort " {{{
+" Plug: rhysd/vim-operator-surround {{{
 	nmap ys <Plug>(operator-surround-append)
 	nmap ds <Plug>(operator-surround-delete)
 	nmap cs <Plug>(operator-surround-replace)
-endfunction " }}}
-call s:add()
+" }}}
 
-let s:repo = 'easymotion/vim-easymotion'
-function! s:hooks.post_source() abort " {{{
+" Plug: easymotion/vim-easymotion {{{
 	nmap <silent><C-J> <Plug>(easymotion-w)
 	nmap <silent><C-K> <Plug>(easymotion-b)
 	vmap <silent><C-J> <Plug>(easymotion-w)
 	vmap <silent><C-K> <Plug>(easymotion-b)
 	let g:EasyMotion_keys = 'siogkmjferndlhyuxvtcbwa'
-endfunction " }}}
-call s:add()
+" }}}
 
-let s:repo = 'deris/vim-shot-f'
-call s:add()
+" Plug: deris/vim-shot-f {{{
+" }}}
 
-let s:repo = 'haya14busa/vim-operator-flashy'
-function! s:hooks.post_source() abort " {{{
+" Plug: haya14busa/vim-operator-flashy {{{
 	map y <Plug>(operator-flashy)
 	nmap Y <Plug>(operator-flashy)$
-endfunction " }}}
-call s:add()
+" }}}
 
-let s:repo = 'LeafCage/yankround.vim'
-function! s:hooks.post_source() abort " {{{
+" Plug: LeafCage/yankround.vim {{{
 	nmap p <Plug>(yankround-p)
 	xmap p <Plug>(yankround-p)
 	nmap P <Plug>(yankround-P)
@@ -191,28 +151,24 @@ function! s:hooks.post_source() abort " {{{
 	nmap gP <Plug>(yankround-gP)
 	nmap <C-p> <Plug>(yankround-prev)
 	nmap <C-n> <Plug>(yankround-next)
-endfunction " }}}
-call s:add()
+" }}}
 
-let s:repo = 'Shougo/neosnippet.vim'
-function! s:hooks.post_source() abort " {{{
+" Plug: Shougo/neosnippet.vim {{{
 	let g:neosnippet#disable_runtime_snippets = {
 	\ '_': 1,
 	\ }
 	imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 	let g:neosnippet#snippets_directory='~/.vim/snippets'
-endfunction " }}}
-call s:add()
+" }}}
 
-let s:repo = 'prabirshrestha/async.vim'
-call s:add()
+" Plug: prabirshrestha/async.vim {{{
+" }}}
 
-let s:repo = 'tyru/caw.vim'
-call s:add()
+" Plug: tyru/caw.vim {{{
+" }}}
 
 if 0
-let s:repo = 'prabirshrestha/vim-lsp'
-function! s:hooks.post_source() abort " {{{
+" Plug: prabirshrestha/vim-lsp {{{
 	augroup vimrc-vim-lsp
 		autocmd!
 		if executable('clangd')
@@ -235,13 +191,10 @@ function! s:hooks.post_source() abort " {{{
 	let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
 	let g:lsp_signs_error = {'text': '✗'}
 	let g:lsp_signs_warning = {'text': '‼'}
-endfunction " }}}
-call s:add()
+" }}}
 endif
 
-" NOTE: Use release branch
-let s:repo = 'neoclide/coc.nvim'
-function! s:hooks.post_source() abort " {{{
+" Plug: neoclide/coc.nvim {{{
 	nnoremap <silent> gd :<C-u>exec "normal \<Plug>(coc-definition)"<CR>
 	nnoremap <silent> gr :<C-u>exec "normal \<Plug>(coc-references)"<CR>
 	nnoremap <silent> gh :<C-u>call CocAction('doHover')<CR>
@@ -258,36 +211,32 @@ function! s:hooks.post_source() abort " {{{
 		autocmd!
 		autocmd User CocLocationsChange Denite coc-jump-locations
 	augroup END
-endfunction " }}}
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-function! s:coc_toggle_diagnostic() abort " {{{
-	let k = 'diagnostic.messageTarget'
-	let x = has_key(g:coc_user_config, k) ? g:coc_user_config[k] : 'float'
-	let y = x ==# 'float' ? 'echo' : 'float'
-	call coc#config(k, y)
-	doautocmd InsertEnter
-	doautocmd InsertLeave
-	doautocmd CursorMoved
-	echo 'diagnostic: ' . y
-endfunction " }}}
-call s:add()
+	function! s:check_back_space() abort
+	  let col = col('.') - 1
+	  return !col || getline('.')[col - 1]  =~# '\s'
+	endfunction
+	function! s:coc_toggle_diagnostic() abort " {{{
+		let k = 'diagnostic.messageTarget'
+		let x = has_key(g:coc_user_config, k) ? g:coc_user_config[k] : 'float'
+		let y = x ==# 'float' ? 'echo' : 'float'
+		call coc#config(k, y)
+		doautocmd InsertEnter
+		doautocmd InsertLeave
+		doautocmd CursorMoved
+		echo 'diagnostic: ' . y
+	endfunction " }}}
+" }}}
 
-let s:repo = 'neoclide/coc-denite'
-call s:add()
+" Plug: neoclide/coc-denite {{{
+" }}}
 
 
-let s:repo = 'w0rp/ale'
-function! s:hooks.post_source() abort " {{{
+" Plug: w0rp/ale {{{
 	let g:ale_lint_on_text_changed = v:false
 	let g:ale_lint_on_insert_leave = v:false
-endfunction " }}}
-call s:add()
+" }}}
 
-let s:repo = 'itchyny/lightline.vim'
-function! s:hooks.post_source() abort " {{{
+" Plug: itchyny/lightline.vim {{{
 	function! Vimrc_summarize_project_path(path) abort " {{{
 		let path = a:path
 		" JVM subproject
@@ -384,14 +333,13 @@ function! s:hooks.post_source() abort " {{{
 		endwhile
 		return out
 	endfunc
-endfunction " }}}
-call s:add()
+" }}}
 
-let s:repo = 'tyru/capture.vim'
-call s:add()
+" Plug: tyru/capture.vim {{{
+" }}}
 
-let s:repo = 'derekwyatt/vim-scala'
-call s:add()
+" Plug: derekwyatt/vim-scala {{{
+" }}}
 
-let s:repo = 'cocopon/iceberg.vim'
-call s:add()
+" Plug: cocopon/iceberg.vim {{{
+" }}}
