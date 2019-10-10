@@ -393,6 +393,5 @@ call s:add()
 let s:repo = 'derekwyatt/vim-scala'
 call s:add()
 
-
 let s:repo = 'cocopon/iceberg.vim'
 call s:add()

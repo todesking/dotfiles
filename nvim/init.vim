@@ -1,17 +1,26 @@
 scriptencoding utf-8
+
+function! s:load_plugin_config() abort " {{{
+	let srcs = glob('~/.config/nvim/plug/*.vim', v:true, v:true)
+	for src in srcs
+		execute 'source ' . src
+	endfor
+endfunction " }}}
+
+
 " Vundle {{{
-set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.cache/nvim-vundle/Vundle.vim
+set runtimepath+=~/.cache/nvim-vundle/Vundle.vim
 call vundle#begin('~/.cache/nvim-vundle/')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 let g:plugin_hooks = []
-source ~/.config/nvim/plugins.vim
+
+call s:load_plugin_config()
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -58,7 +67,7 @@ augroup vimrc-full-screen-help " {{{
 	autocmd BufEnter * call Vimrc_full_screen_help()
 	autocmd FileType * call Vimrc_full_screen_help()
 	function! Vimrc_full_screen_help() abort
-		if  &ft =~# '^\(help\|ref-.*\)$' && winnr() == 1 && winnr('$') == 2 && bufname(winbufnr(2)) == ''
+		if  &filetype =~# '^\(help\|ref-.*\)$' && winnr() == 1 && winnr('$') == 2 && bufname(winbufnr(2)) ==# ''
 			try
 				" This will throw E788, cause unknown
 				execute "normal \<C-W>o"
