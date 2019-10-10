@@ -70,8 +70,8 @@ scriptencoding utf-8
 	endfunction " }}}
 	function! GetB()
 		let c = matchstr(getline('.'), '.', col('.') - 1)
-		if &enc != &fenc
-			let c = iconv(c, &enc, &fenc)
+		if &encoding != &fencoding
+			let c = iconv(c, &encoding, &fencoding)
 		endif
 		return String2Hex(c)
 	endfunction
@@ -79,7 +79,7 @@ scriptencoding utf-8
 	" The function Nr2Hex() returns the Hex string of a number.
 	func! Nr2Hex(nr)
 		let n = a:nr
-		let r = ""
+		let r = ''
 		while n
 		let r = '0123456789ABCDEF'[n % 16] . r
 		let n = n / 16

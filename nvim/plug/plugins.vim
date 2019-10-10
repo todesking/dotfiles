@@ -20,22 +20,6 @@ scriptencoding utf-8
 " Plug: osyo-manga/vim-brightest {{{
 " }}}
 
-" Plug: chemzqm/unite-location {{{
-" }}}
-
-" Plug: Shougo/unite.vim {{{
-" }}}
-
-" Plug: Shougo/neomru.vim {{{
-	let g:neomru#directory_mru_ignore_pattern = g:neomru#directory_mru_ignore_pattern . '\|\%(.metals\)' 
-" }}}
-
-" Plug: Shougo/unite-outline {{{
-	let g:unite_source_outline_scala_show_all_declarations = 1
-	let g:unite_source_outline_max_headings = 10000
-	let g:unite_source_outline_cache_limit = 10000
-" }}}
-
 " Plug: kana/vim-textobj-user {{{
 	call textobj#user#plugin('lastmofified', {
 	\   'lastmodified': {
@@ -124,9 +108,6 @@ if 0
 	let g:lsp_signs_warning = {'text': '‼'}
 " }}}
 endif
-
-" Plug: neoclide/coc-denite {{{
-" }}}
 
 " Plug: w0rp/ale {{{
 	let g:ale_lint_on_text_changed = v:false

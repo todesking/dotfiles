@@ -67,3 +67,22 @@
 		endif
 	endfunction " }}}
 " }}}
+
+" Plug: neoclide/coc-denite {{{
+" }}}
+
+" Plug: chemzqm/unite-location {{{
+" }}}
+
+" Plug: Shougo/unite.vim {{{
+" }}}
+
+" Plug: Shougo/neomru.vim {{{
+	let g:neomru#directory_mru_ignore_pattern = g:neomru#directory_mru_ignore_pattern . '\|\%(.metals\)' 
+" }}}
+
+" Plug: Shougo/unite-outline {{{
+	let g:unite_source_outline_scala_show_all_declarations = 1
+	let g:unite_source_outline_max_headings = 10000
+	let g:unite_source_outline_cache_limit = 10000
+" }}}
