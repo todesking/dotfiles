@@ -2,14 +2,14 @@
 	nnoremap <silent> gd :<C-u>exec "normal \<Plug>(coc-definition)"<CR>
 	nnoremap <silent> gr :<C-u>exec "normal \<Plug>(coc-references)"<CR>
 	nnoremap <silent> gh :<C-u>call CocAction('doHover')<CR>
-	nnoremap <silent><expr> ,d <SID>coc_toggle_diagnostic()
+	nnoremap <silent> ,d :<C-u>call <SID>coc_toggle_diagnostic()<CR>
 	inoremap <silent><expr> <Tab>
 		\ pumvisible() ? "\<C-n>" :
 		\ <SID>check_back_space() ? "\<Tab>" :
 		\ coc#refresh()
 	inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-	hi link CocErrorVirtualText Error
-	hi link CocWarnVirtualText Comment
+	hi link CocErrorVirtualText Comment
+	hi link CocWarningVirtualText Comment
 	let g:coc_enable_locationlist = 0
 	augroup Vimrc_coc
 		autocmd!

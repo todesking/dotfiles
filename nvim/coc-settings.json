@@ -17,7 +17,7 @@
   "diagnostic.refreshOnInsertMode": false,
   "diagnostic.checkCurrentLine": true,
   "diagnostic.virtualText": true,
-  "diagnostic.virtualTextPrefix": "// !!! ",
+  "diagnostic.virtualTextPrefix": "    !!! ",
   "diagnostic.virtualTextLineSeparator": " ",
   "diagnostic.messageTarget": "float",
   "diagnostic.maxWindowHeight": 20,
