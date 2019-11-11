@@ -32,7 +32,7 @@
 	nnoremap <silent><C-Q>b :<C-u>Denite buffer<CR>
 	nnoremap <silent><C-Q>c :<C-u>exec 'Denite file/rec:'.expand('%:p:h').'/'<CR>
 	nnoremap <silent><C-Q>o :<C-u>Denite unite:outline -start-filter<CR>
-	nnoremap <silent><C-Q>d :<C-u>Denite coc-diagnostic<CR>
+	nnoremap <silent><C-Q>d :<C-u>Denite coc-diagnostic ale<CR>
 	nnoremap <silent><C-Q>l :<C-u>Denite -auto-action=preview location_list<CR>
 
 	nnoremap <silent><C-Q>u :Denite -resume<CR>
@@ -70,6 +70,9 @@
 " }}}
 
 " Plug: neoclide/coc-denite {{{
+" }}}
+
+" Plug: iyuuya/denite-ale {{{
 " }}}
 
 " Plug: chemzqm/unite-location {{{
