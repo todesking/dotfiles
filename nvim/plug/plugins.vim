@@ -82,36 +82,13 @@ scriptencoding utf-8
 " Plug: tyru/caw.vim {{{
 " }}}
 
-if 0
-" Plug: prabirshrestha/vim-lsp {{{
-	augroup vimrc-vim-lsp
-		autocmd!
-		if executable('clangd')
-			au User lsp_setup call lsp#register_server({
-				\ 'name': 'clangd',
-				\ 'cmd': {server_info->['clangd']},
-				\ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-				\ })
-		endif
-		if executable('metals-vim')
-			au User lsp_setup call lsp#register_server({
-				\ 'name': 'metals',
-				\ 'cmd': {server_info->['metals-vim']},
-				\ 'initialization_options': { 'rootPatterns': 'build.sbt' },
-				\ 'whitelist': ['sbt', 'scala'],
-				\ })
-		endif
-	augroup END
-	let g:lsp_signs_enabled = 1         " enable signs
-	let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
-	let g:lsp_signs_error = {'text': '✗'}
-	let g:lsp_signs_warning = {'text': '‼'}
-" }}}
-endif
-
 " Plug: w0rp/ale {{{
 	let g:ale_lint_on_text_changed = v:false
 	let g:ale_lint_on_insert_leave = v:false
+	let g:ale_disable_lsp = v:true
+	let g:ale_linters_ignore = {'cpp': 
+	  \ ['ccls', 'clang', 'clangcheck', 'clangd', 'clangtidy', 'clazy', 'cppcheck', 'cpplint', 'cquery', 'flawfinder', 'gcc']
+	  \}
 " }}}
 
 " Plug: tyru/capture.vim {{{

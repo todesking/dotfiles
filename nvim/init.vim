@@ -88,7 +88,8 @@ set helplang=en,ja
 set lazyredraw
 
 " keymap
-nnoremap <C-B> :<C-U>up<CR>
+" coc.vim's bug
+nnoremap <silent><C-B> :<C-U>sleep 500m \| up<CR>
 nnoremap <silent>,n :tabnew<CR>
 nnoremap <silent>H :tabprevious<CR>
 nnoremap <silent>L :tabnext<CR>

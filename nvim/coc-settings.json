@@ -9,18 +9,23 @@
       "command": "metals-vim",
       "rootPatterns": ["build.sbt"],
       "filetypes": ["scala", "sbt"]
+    },
+    "pyls": {
+      "command": "pyls",
+      "rootPatterns": ["PipFile", "requirements.txt", "setup.py"],
+      "filetypes": ["python"]
     }
   },
   "suggest.floatEnable": true,
   "suggest.enablePreview": true,
   "suggest.maxPreviewWidth": 120,
-  "diagnostic.refreshOnInsertMode": false,
+  "diagnostic.refreshAfterSave": true,
   "diagnostic.checkCurrentLine": true,
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": "    !!! ",
   "diagnostic.virtualTextLineSeparator": " ",
   "diagnostic.messageTarget": "float",
-  "diagnostic.maxWindowHeight": 20,
+  "diagnostic.maxWindowHeight": 50,
   "diagnostic.maxWindowWidth": 170,
   "signature.maxWindowHeight": 20,
   // "diagnostic.displayByAle": true,

@@ -3,6 +3,7 @@
 	nnoremap <silent> gr :<C-u>exec "normal \<Plug>(coc-references)"<CR>
 	nnoremap <silent> gh :<C-u>call CocAction('doHover')<CR>
 	nnoremap <silent> ,d :<C-u>call <SID>coc_toggle_diagnostic()<CR>
+	command! -nargs=0 CocFormat :call CocAction('format')
 	inoremap <silent><expr> <Tab>
 		\ pumvisible() ? "\<C-n>" :
 		\ <SID>check_back_space() ? "\<Tab>" :

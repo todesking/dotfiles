@@ -1,5 +1,7 @@
 scriptencoding utf-8
 
+" Plug: maximbaz/lightline-ale
+
 " Plug: itchyny/lightline.vim {{{
 	function! Vimrc_summarize_project_path(path) abort " {{{
 		let path = a:path
@@ -15,10 +17,15 @@ scriptencoding utf-8
 		return path
 	endfunction " }}}
 	" let g:lightline {{{
+	let active_right = [
+	\ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
+	\ ['cocstatus', 'lineinfo'],
+	\ ['fileformat', 'fileencoding', 'filetype'], ['build_status', 'charinfo']
+	\ ]
 	let g:lightline = {
 				\ 'active': {
 				\   'left': [['project_component'], ['path_component']],
-				\   'right': [['cocstatus', 'lineinfo'], ['fileformat', 'fileencoding', 'filetype'], ['build_status', 'charinfo'] ],
+				\   'right': active_right
 				\ },
 				\ 'inactive': {
 				\   'left': [['project_name', 'git_branch'], ['path_component']],
@@ -37,6 +44,18 @@ scriptencoding utf-8
 				\ },
 				\ }
 	" }}}
+	let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
+	let g:lightline.component_type = {
+	  \     'linter_checking': 'left',
+	  \     'linter_warnings': 'warning',
+	  \     'linter_errors': 'error',
+	  \     'linter_ok': 'left',
+	  \ }
 	let g:lightline['component']['path_component'] =
 				\ g:lightline['component']['project_path'].
 				\ g:lightline['component']['readonly'].
