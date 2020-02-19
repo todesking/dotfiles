@@ -5,17 +5,13 @@
       "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
       "filetypes": ["c", "cpp", "objc", "objcpp"]
     },
-    "metals": {
-      "command": "metals-vim",
-      "rootPatterns": ["build.sbt"],
-      "filetypes": ["scala", "sbt"]
-    },
     "pyls": {
       "command": "pyls",
-      "rootPatterns": ["PipFile", "requirements.txt", "setup.py"],
+      "rootPatterns": ["PipFile", "requirements.txt", "setup.py", ".python-version"],
       "filetypes": ["python"]
     }
   },
+  "coc.preferences.rootPatterns": ["build.sbt", "README.md", ".git"],
   "suggest.floatEnable": true,
   "suggest.enablePreview": true,
   "suggest.maxPreviewWidth": 120,

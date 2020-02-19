@@ -1,5 +1,6 @@
 " Plug: neoclide/coc.nvim {{{
 	nnoremap <silent> gd :<C-u>exec "normal \<Plug>(coc-definition)"<CR>
+	nnoremap <silent> gD :<C-u>exec "normal \<Plug>(coc-declaration)"<CR>
 	nnoremap <silent> gr :<C-u>exec "normal \<Plug>(coc-references)"<CR>
 	nnoremap <silent> gh :<C-u>call CocAction('doHover')<CR>
 	nnoremap <silent> ,d :<C-u>call <SID>coc_toggle_diagnostic()<CR>
@@ -15,6 +16,7 @@
 	augroup Vimrc_coc
 		autocmd!
 		autocmd User CocLocationsChange Denite coc-jump-locations
+		autocmd FileType scala let b:coc_root_patterns = ['build.sbt']
 	augroup END
 	function! s:check_back_space() abort
 	  let col = col('.') - 1

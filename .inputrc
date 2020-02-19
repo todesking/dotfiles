@@ -2,7 +2,6 @@ set convert-meta off
 set input-meta on
 set meta-flag on
 set output-meta on
-set kanji-code utf-8
 set completion-ignore-case on
 "\e[1~": beginning-of-line
 "\e[4~": end-of-line

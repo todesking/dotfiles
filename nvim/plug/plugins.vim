@@ -99,3 +99,9 @@ scriptencoding utf-8
 
 " Plug: cocopon/iceberg.vim {{{
 " }}}
+
+" Plug: kchmck/vim-coffee-script {{{
+" }}}
+
+" Plug: AndrewRadev/linediff.vim {{{
+" }}}

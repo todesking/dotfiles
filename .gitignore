@@ -3,3 +3,4 @@ vendor
 .metals
 .bloop
 __pycache__
+nvim/.netrwhist
