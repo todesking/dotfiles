@@ -4,3 +4,4 @@ vendor
 .bloop
 __pycache__
 nvim/.netrwhist
+.venv

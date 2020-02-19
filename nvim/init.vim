@@ -37,6 +37,8 @@ filetype plugin indent on
 call s:plugin_post_source()
 " }}}
 
+let g:python3_host_prog = expand('~/dotfiles/nvim/python/.venv/bin/python')
+
 " search
 set ignorecase
 set smartcase
