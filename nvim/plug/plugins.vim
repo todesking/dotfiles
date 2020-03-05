@@ -105,3 +105,9 @@ scriptencoding utf-8
 
 " Plug: AndrewRadev/linediff.vim {{{
 " }}}
+
+" Plug: airblade/vim-gitgutter {{{
+" }}}
+
+" Plug: tpope/vim-fugitive {{{
+" }}}
