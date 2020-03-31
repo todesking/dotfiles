@@ -5,3 +5,4 @@ vendor
 __pycache__
 nvim/.netrwhist
 .venv
+metals.sbt
