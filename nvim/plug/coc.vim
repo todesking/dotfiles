@@ -12,6 +12,9 @@
 	inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 	hi link CocErrorVirtualText Comment
 	hi link CocWarningVirtualText Comment
+	hi link CocErrorFloat CocInfoFloat
+	hi link CocErrorSign CocInfoSign
+	hi CocErrorHighlight guifg=#cc77aa
 	let g:coc_enable_locationlist = 0
 	augroup Vimrc_coc
 		autocmd!
