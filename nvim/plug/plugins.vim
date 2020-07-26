@@ -73,7 +73,7 @@ scriptencoding utf-8
 	\ '_': 1,
 	\ }
 	imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-	let g:neosnippet#snippets_directory='~/.vim/snippets'
+	let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
 " }}}
 
 " Plug: prabirshrestha/async.vim {{{
@@ -83,6 +83,7 @@ scriptencoding utf-8
 " }}}
 
 " Plug: w0rp/ale {{{
+	let g:ale_enabled = v:false
 	let g:ale_lint_on_text_changed = v:false
 	let g:ale_lint_on_insert_leave = v:false
 	let g:ale_disable_lsp = v:true
@@ -110,4 +111,22 @@ scriptencoding utf-8
 " }}}
 
 " Plug: tpope/vim-fugitive {{{
+" }}}
+
+" Plug: MaxMEllon/vim-jsx-pretty
+
+" Plug: mattn/emmet-vim
+
+" Plug: vim-scripts/closetag.vim {{{
+	augroup vimrc-closetag-vim
+		autocmd!
+		autocmd Filetype * call Vimrc_ft_closetag()
+	augroup END
+	function! Vimrc_ft_closetag() abort " {{{
+		if &filetype ==# 'xml'
+			let b:unaryTagsStack = ''
+		else
+			let b:unaryTagsStack='area base br dd dt hr img input link meta param'
+		endif
+	endfunction " }}}
 " }}}

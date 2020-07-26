@@ -1,0 +1,220 @@
+snippet l.macros
+    import scala.language.experimental.macros
+
+snippet def
+    def ${1:name} = {
+    }
+
+snippet mks
+options word
+    mkString("\n")
+
+snippet mkss
+options word
+    mkString(" ")
+
+snippet mkse
+options word
+    mkString("")
+
+snippet mks,
+options word
+    mkString(", ")
+
+snippet Main
+    object Main {
+      def main(args: Array[String]): Unit = {
+      ${1}
+      }
+    }
+
+snippet main
+      def main(args: Array[String]): Unit = {
+      ${1}
+      }
+
+snippet ct
+    com.todesking.
+
+snippet <
+    extends 
+
+snippet w
+    with 
+
+snippet ov
+    override 
+
+snippet od
+    override def 
+
+snippet lv
+    lazy val 
+
+snippet oval
+options word
+    override val 
+
+snippet olv
+options word
+    override lazy val 
+
+snippet ot
+    override type 
+
+snippet ass
+    throw new AssertionError()
+
+snippet rte
+    throw new RuntimeException
+
+snippet im
+options word
+    implicit 
+
+snippet il
+options word
+    implicitly[
+
+snippet id
+    implicit def 
+
+snippet iv
+    implicit val 
+
+snippet pt
+    private[this] 
+
+snippet ptd
+    private[this] def 
+
+snippet ptv
+    private[this] val 
+
+snippet ptr
+    private[this] var 
+
+snippet ac
+    abstract class 
+
+snippet sc
+    sealed class 
+
+snippet st
+    sealed trait 
+
+snippet sac
+    sealed abstract class 
+
+snippet cc
+    case class 
+
+snippet cl
+    class 
+
+snippet t
+    trait 
+
+snippet o
+    object 
+snippet co
+    case object 
+
+snippet ic
+    implicit class 
+
+snippet ses
+options word
+    implicit session: DBSession
+
+snippet jj
+options word
+    ⇓ 
+
+snippet ll
+    → 
+
+snippet c
+    case 
+
+snippet u
+options word
+    : Unit = {
+    ${1}
+    }
+
+snippet ad
+options word
+    Array[Double]
+
+snippet ai
+options word
+    Array[Int]
+
+snippet s
+options word
+    Seq[
+
+snippet ss
+options word
+    Seq[String]
+
+snippet si
+options word
+    Seq[Int]
+
+snippet sd
+options word
+    Seq[Double]
+
+snippet tos
+options word
+    toSeq
+
+snippet {
+options word
+    {
+    ${1}
+    }
+
+snippet =>
+options word
+    =>
+    ${1}
+    }
+
+snippet i
+    import 
+
+snippet i.ml
+    import org.apache.spark.ml
+
+snippet i.ss
+    import org.apache.spark.sql.SparkSession
+
+snippet i.df
+    import org.apache.spark.sql.DataFrame
+
+snippet i.ds
+    import org.apache.spark.sql.Dataset
+
+snippet i.si
+    import spark.implicits._
+
+snippet i.sf
+    import org.apache.spark.sql.{functions => fn}
+
+snippet i.jc
+    import scala.collection.JavaConverters._
+
+snippet i.tt
+    import scala.reflect.runtime.universe.TypeTag
+
+snippet i.bo
+    import scala.collection.breakOut
+
+snippet i.arrays
+    import java.util.Arrays
+
+snippet pn
+    println(s"${1}")
