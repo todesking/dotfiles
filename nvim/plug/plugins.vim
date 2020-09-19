@@ -113,9 +113,13 @@ scriptencoding utf-8
 " Plug: tpope/vim-fugitive {{{
 " }}}
 
+" Plug: yuezk/vim-js
+" Plug: HerringtonDarkholme/yats.vim
 " Plug: MaxMEllon/vim-jsx-pretty
 
-" Plug: mattn/emmet-vim
+" Plug: mattn/emmet-vim {{{
+  let g:user_emmet_mode = 'i'
+" }}}
 
 " Plug: vim-scripts/closetag.vim {{{
 	augroup vimrc-closetag-vim
@@ -130,3 +134,5 @@ scriptencoding utf-8
 		endif
 	endfunction " }}}
 " }}}
+
+" Plug: neoclide/jsonc.vim

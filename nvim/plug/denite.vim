@@ -30,7 +30,7 @@
 	nnoremap <silent><C-Q>P :<C-u>exec 'Denite file/rec:' . current_project#info(expand('%')).main_path . ' -start-filter'<CR>
 	nnoremap <silent><C-Q>p :<C-u>exec 'Denite file/rec:' . current_project#info(expand('%')).sub_path . ' -start-filter'<CR>
 	nnoremap <silent><C-Q>b :<C-u>Denite buffer<CR>
-	nnoremap <silent><C-Q>c :<C-u>exec 'Denite file/rec:'.expand('%:p:h').'/'<CR>
+	nnoremap <silent><C-Q>c :<C-u>exec 'Denite file/rec:'.expand('%:p:h').'/ -start-filter'<CR>
 	nnoremap <silent><C-Q>o :<C-u>Denite unite:outline -start-filter<CR>
 	nnoremap <silent><C-Q>d :<C-u>Denite coc-diagnostic ale<CR>
 	nnoremap <silent><C-Q>t :<C-u>Denite coc-symbols -start-filter<CR>

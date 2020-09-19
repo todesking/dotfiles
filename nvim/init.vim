@@ -102,6 +102,7 @@ nnoremap <silent>,L :tabmove +1<CR>
 nnoremap <silent>y= :<C-U>call setreg("*", getreg("0"))<CR>:<C-U>echo "yanked to *: " . getreg("*")[0:30]<CR>
 nnoremap <silent>j gj
 nnoremap <silent>k gk
+nnoremap <silent><leader>w :<C-U>set wrap!<CR>
 
 imap <D-Space> <Space>
 inoremap <C-E> <END>

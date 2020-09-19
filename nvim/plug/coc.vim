@@ -3,7 +3,7 @@
 	  \ 'coc-metals',
 	  \ 'coc-json',
 	  \ 'coc-tsserver',
-	  \ 'coc-tslint-plugin',
+	  \ 'coc-eslint',
 	  \ 'coc-html',
 	  \ 'coc-css',
 	  \ 'coc-prettier'
@@ -35,9 +35,11 @@
 	inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 	command! -nargs=0 CocFormat :call CocAction('format')
+	command! -nargs=0 CocEslintQuietToggle :call coc#config('eslint.quiet', !coc#util#get_config('eslint')['quiet'])
 
 	hi link CocErrorVirtualText Comment
 	hi link CocWarningVirtualText Comment
+	hi link CocInfoVirtualText Comment
 	hi link CocErrorFloat CocInfoFloat
 	hi link CocErrorSign CocInfoSign
 	hi CocErrorHighlight guifg=#cc77aa
@@ -48,4 +50,23 @@
 		autocmd User CocLocationsChange Denite coc-jump-locations
 		autocmd FileType scala let b:coc_root_patterns = ['build.sbt']
 	augroup END
+
+	" Solve conflict with EasyMotion {{{
+	" https://github.com/neoclide/coc.nvim/issues/110#issuecomment-658839454
+	let g:easymotion#is_active = 0
+	function! EasyMotionCoc() abort
+	  if EasyMotion#is_active()
+		let g:easymotion#is_active = 1
+		CocDisable
+	  else
+		if g:easymotion#is_active == 1
+		  let g:easymotion#is_active = 0
+		  CocEnable
+		endif
+	  endif
+	endfunction
+	augroup Vimrc_coc
+	  autocmd TextChanged,CursorMoved * call EasyMotionCoc()
+	augroup END
+	" }}}
 " }}}

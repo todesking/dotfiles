@@ -12,9 +12,12 @@
     }
   },
   "coc.preferences.rootPatterns": ["build.sbt", "README.md", ".git"],
+  "coc.preferences.extensionUpdateCheck": "never",
+
   "suggest.floatEnable": true,
   "suggest.enablePreview": true,
   "suggest.maxPreviewWidth": 120,
+
   "diagnostic.checkCurrentLine": true,
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": "    !!! ",
@@ -23,7 +26,19 @@
   "diagnostic.messageTarget": "float",
   "diagnostic.maxWindowHeight": 50,
   "diagnostic.maxWindowWidth": 170,
+  "diagnostic.refreshAfterSave": false,
+  "diagnostic.refreshOnInsertMode": false,
+
   "signature.maxWindowHeight": 20,
-  "codeLens.enable": true,
-  "coc.preferences.extensionUpdateCheck": "never"
+
+  "javascript.validate.enable": false,
+  "javascript.showUnused": false,
+
+  "typescript.validate.enable": true,
+  "typescript.showUnused": false,
+  "typescript.referencesCodeLens.enable": false,
+
+  "tsserver.log": "verbose",
+
+  "eslint.quiet": true
 }
