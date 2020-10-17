@@ -34,7 +34,7 @@
 	dc = diff --cached
 	dis = diff --ignore-space-change
 	dcis = diff --cached --ignore-space-change
-	r-i = rebase -i
+	r-i = rebase -i --autosquash
 	r-c = rebase --continue
 	r-a = rebase --abort
 	dh- = diff HEAD~
@@ -58,6 +58,8 @@
 	push-origin-head = push --set-upstream origin HEAD
 	# set commit-message-prefix of current branch
 	set-cmp = !git config "branch.$(git rev-parse --abbrev-ref HEAD).message-prefix"
+    wip = commit --fixup HEAD
+    ras = rebase --auto-squash
 [push]
 	default = upstream
 [filter "media"]
@@ -70,3 +72,5 @@
 	conflictstyle = diff3
 [init]
 	templatedir = ~/dotfiles/git_template/
+[pull]
+	rebase = false
