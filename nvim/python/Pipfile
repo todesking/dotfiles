@@ -6,9 +6,7 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-greenlet = "==0.4.15"
-msgpack = "==0.6.2"
-pynvim = "==0.4.1"
+pynvim = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"
