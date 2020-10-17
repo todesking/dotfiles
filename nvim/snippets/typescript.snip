@@ -4,25 +4,86 @@ snippet c
 snippet f
     function 
 
+snippet if
+    interface 
+snippet ro
+    readonly
+
+snippet )
+options word
+    ) => {
+    ${0}
+    }
+snippet ))
+options word
+    ) => {
+    ${0}
+    })
+
 snippet e
     export 
 
+snippet et
+    export type 
+
+snippet ec
+    export const 
+
+snippet ef
+    export function 
+
+snippet t
+    type 
+
+snippet ac
+    as const
+
+snippet i
+options word
+    infer 
+
 snippet s
+options word
     string
 
+snippet sa
+options word
+    string[]
+
 snippet n
+options word
     number
 
+snippet na
+options word
+    number[]
+
 snippet b
+options word
     boolean
 
+snippet ba
+options word
+    boolean[]
+
 snippet u
+options word
     unknown
+
+snippet ua
+options word
+    unknown[]
 
 snippet <
     extends 
+
+snippet <s
+    extends string
 
 snippet {
     {
     ${0}
     }
+
+snippet unused
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars

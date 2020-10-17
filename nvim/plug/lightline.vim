@@ -18,6 +18,7 @@ scriptencoding utf-8
 	endfunction " }}}
 	" let g:lightline {{{
 	let active_right = [
+	\ ['syntax_trace'],
 	\ [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
 	\ ['cocstatus', 'lineinfo'],
 	\ ['fileformat', 'fileencoding', 'filetype'], ['build_status', 'charinfo']
@@ -37,6 +38,7 @@ scriptencoding utf-8
 				\   'project_name': '%{current_project#info().name}',
 				\   'project_path': '%{Vimrc_summarize_project_path(current_project#file_info(expand(''%''))["file_path"])}',
 				\   'charinfo': '%{printf("%6s",GetB())}',
+				\   'syntax_trace': '%{get(b:, "lightline_syntax_trace", v:false) ? Vimrc_syntax_trace() : ""}',
 				\ },
 				\ 'component_function': {
 				\   'git_branch': 'Vimrc_statusline_git_branch',

@@ -8,7 +8,7 @@ function! s:load_plugin_config() abort " {{{
 	for src in s:plugin_config_files
 		let lines = readfile(src)
 		for l in lines
-			let m = matchlist(l, '" Plug: \([^ ]\+\).*')
+			let m = matchlist(l, '^\s*" Plug: \([^ ]\+\).*')
 			if !empty(m)
 				call add(plugins, m[1])
 			endif
@@ -37,7 +37,11 @@ filetype plugin indent on
 call s:plugin_post_source()
 " }}}
 
-let g:python3_host_prog = expand('~/dotfiles/nvim/python/.venv/bin/python')
+function! s:setup_python() abort " {{{
+  let path = substitute(system('cd ~/dotfiles/nvim/python/ && pipenv run which python'), '\n', '', '')
+  let g:python3_host_prog = path
+endfunction " }}}
+call s:setup_python()
 
 " search
 set ignorecase

@@ -13,14 +13,14 @@
 	nnoremap <silent> gr :<C-u>exec "normal \<Plug>(coc-references)"<CR>
 	nnoremap <silent> gh :<C-u>call CocAction('doHover')<CR>
 	function! s:coc_toggle_diagnostic() abort " {{{
-		let k = 'diagnostic.messageTarget'
-		let x = has_key(g:coc_user_config, k) ? g:coc_user_config[k] : 'float'
-		let y = x ==# 'float' ? 'echo' : 'float'
-		call coc#config(k, y)
+		let old_conf = coc#util#get_config('diagnostic')['enableMessage']
+		let confmap = {'never': 'always', 'always': 'never', 'jump': 'jump'}
+		let new_conf = confmap[old_conf]
+		call coc#config('diagnostic.enableMessage', new_conf)
 		doautocmd InsertEnter
 		doautocmd InsertLeave
 		doautocmd CursorMoved
-		echo 'diagnostic: ' . y
+		echo 'diagnostic.enableMessage = ' . new_conf
 	endfunction " }}}
 	nnoremap <silent> ,d :<C-u>call <SID>coc_toggle_diagnostic()<CR>
 
@@ -57,11 +57,17 @@
 	function! EasyMotionCoc() abort
 	  if EasyMotion#is_active()
 		let g:easymotion#is_active = 1
-		CocDisable
+		if get(g:, 'coc_enabled', v:false)
+		  let g:coc_temporary_disabled = v:true
+		  CocDisable
+		endif
 	  else
 		if g:easymotion#is_active == 1
 		  let g:easymotion#is_active = 0
-		  CocEnable
+		  if get(g:, 'coc_temporary_disabled', v:false)
+			let g:coc_temporary_disabled = v:false
+			CocEnable
+		  endif
 		endif
 	  endif
 	endfunction

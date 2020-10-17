@@ -113,9 +113,9 @@ scriptencoding utf-8
 " Plug: tpope/vim-fugitive {{{
 " }}}
 
-" Plug: yuezk/vim-js
+" " Plug: yuezk/vim-js
 " Plug: HerringtonDarkholme/yats.vim
-" Plug: MaxMEllon/vim-jsx-pretty
+" " Plug: MaxMEllon/vim-jsx-pretty
 
 " Plug: mattn/emmet-vim {{{
   let g:user_emmet_mode = 'i'
