@@ -2,9 +2,11 @@
 --regex-ruby=/^[[:space:]]*attr_(reader|writer|accessor|scope)[[:space:]]+:([a-z0-9_?]+)/\2/
 --regex-ruby=/^[[:space:]]*([_A-Z][_A-Z0-9]*)[[:space:]]*=([[:space:]]|[^<>=])/\1/
 --regex-ruby=/^[[:space:]]*class[[:space:]]+([_A-Z][_A-Z0-9]*)[[:space:]]*([<;].*)$/\1/
+
 --fields=+l
 --verbose=no
 --tag-relative=yes
+
 --langdef=scala
 --langmap=scala:.scala
 --regex-scala=/^.*class[[:space:]]+([a-zA-Z0-9_:<>]+)/\1/c,classes/
@@ -22,47 +24,20 @@
 --langdef=markdown-java-nyandoc
 --regex-markdown-java-nyandoc=/^#+ .*[[:space:]]([a-zA-Z0-9]+(<.+>)?)\(/\1/
 
+--exclude=/THISS_IS_JUST_A_COMMENT:from_yats.vim
+--langdef=typescript
+--langmap=typescript:.ts
+--regex-typescript=/^[ \t]*(export)?[ \t]*class[ \t]+([a-zA-Z0-9_]+)/\2/c,classes/
+--regex-typescript=/^[ \t]*(export)?[ \t]*abstract class[ \t]+([a-zA-Z0-9_]+)/\2/a,abstract classes/
+--regex-typescript=/^[ \t]*(export)?[ \t]*module[ \t]+([a-zA-Z0-9_]+)/\2/n,modules/
+--regex-typescript=/^[ \t]*(export)?[ \t]*type[ \t]+([a-zA-Z0-9_]+)/\2/t,types/
+--regex-typescript=/^[ \t]*(export)?[ \t]*namespace[ \t]+([a-zA-Z0-9_]+)/\2/n,modules/
+--regex-typescript=/^[ \t]*(export)?[ \t]*function[ \t]+([a-zA-Z0-9_]+)/\2/f,functions/
+--regex-typescript=/^[ \t]*export[ \t]+(var|const|let)[ \t]+([a-zA-Z0-9_]+)/\1/v,variables/
+--regex-typescript=/^[ \t]*var[ \t]+([a-zA-Z0-9_]+)[ \t]*=[ \t]*function[ \t]*\(\)/\1/l,varlambdas/
+--regex-typescript=/^[ \t]*(export)?[ \t]*(public|private)[ \t]+(static|readonly)?[ \t]*([a-zA-Z0-9_]+)/\4/m,members/
+--regex-typescript=/^[ \t]*(export)?[ \t]*interface[ \t]+([a-zA-Z0-9_]+)/\2/i,interfaces/
+--regex-typescript=/^[ \t]*(export)?[ \t]*enum[ \t]+([a-zA-Z0-9_]+)/\2/e,enums/
+
 --exclude=target
 --exclude=.git
-
---languages=-Ant
---languages=-Asm
---languages=-Asp
---languages=-Awk
---languages=-Basic
---languages=-BETA
---languages=-C
---languages=-C++
---languages=-C#
---languages=-Cobol
---languages=-DosBatch
---languages=-Eiffel
---languages=-Erlang
---languages=-Flex
---languages=-Fortran
---languages=-HTML
---languages=-Java
---languages=-JavaScript
---languages=-Lisp
---languages=-Lua
---languages=-Make
---languages=-MatLab
---languages=-Pascal
---languages=-Perl
---languages=-PHP
---languages=-Python
---languages=-REXX
---languages=-Ruby
---languages=-Scheme
---languages=-Sh
---languages=-SLang
---languages=-SML
---languages=-SQL
---languages=-Tcl
---languages=-Tex
---languages=-Vera
---languages=-Verilog
---languages=-VHDL
---languages=-Vim
---languages=-YACC
---languages=-scala
