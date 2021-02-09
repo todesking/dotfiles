@@ -11,6 +11,7 @@
 	nnoremap <silent> gd :<C-u>exec "normal \<Plug>(coc-definition)"<CR>
 	nnoremap <silent> gD :<C-u>exec "normal \<Plug>(coc-declaration)"<CR>
 	nnoremap <silent> gr :<C-u>exec "normal \<Plug>(coc-references)"<CR>
+	nnoremap <silent> ga :<C-u>exec "normal \<Plug>(coc-codeaction)"<CR>
 	nnoremap <silent> gh :<C-u>call CocAction('doHover')<CR>
 	function! s:coc_toggle_diagnostic() abort " {{{
 		let old_conf = coc#util#get_config('diagnostic')['enableMessage']
@@ -72,7 +73,7 @@
 	  endif
 	endfunction
 	augroup Vimrc_coc
-	  autocmd TextChanged,CursorMoved * call EasyMotionCoc()
+	  autocmd TextChanged,CursorMoved *.{ts,js} call EasyMotionCoc()
 	augroup END
 	" }}}
 " }}}

@@ -40,5 +40,7 @@
 
   "tsserver.log": "verbose",
 
-  "eslint.quiet": true
+  "eslint.quiet": true,
+
+  "rust.clippy_preference": "on"
 }

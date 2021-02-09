@@ -232,3 +232,4 @@ export EDITOR=`which vim`
 if which rbenv > /dev/null 2>&1; then eval "$(rbenv init -)"; fi
 
 if [ -f "$HOME/.bashrc.local" ]; then source "$HOME/.bashrc.local"; fi
+if [ -f "$HOME/.cargo" ]; then source "$HOME/.cargo/env"; fi
