@@ -52,10 +52,10 @@
 	  BrightestLock
 	endfunction " }}}
 	function! s:denite_filter_my_settings() abort " {{{
-		imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
-		imap <silent><buffer> <ESC> <Plug>(denite_filter_quit)
+		imap <silent><buffer> <C-o> <Plug>(denite_filter_update)
+		imap <silent><buffer> <ESC> <Plug>(denite_filter_update)
 		imap <silent><buffer><expr> <CR> denite#do_map('do_action')
-		imap <silent><buffer><expr> <C-N> denite#do_map('do_action')
+		imap <silent><buffer><expr> <C-m> denite#do_map('do_action')
 		inoremap <silent><buffer> <C-n> <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
 		inoremap <silent><buffer> <C-p> <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
 		BrightestLock
