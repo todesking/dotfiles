@@ -43,7 +43,10 @@
 	hi link CocInfoVirtualText Comment
 	hi link CocErrorFloat CocInfoFloat
 	hi link CocErrorSign CocInfoSign
-	hi CocErrorHighlight guifg=#cc77aa
+	" for dark mode
+	" hi CocErrorHighlight guifg=#cc77aa
+	hi CocErrorFloat guifg=#ca9005
+	hi CocFloating guibg=#eeeeee
 
 	let g:coc_enable_locationlist = 0
 	augroup Vimrc_coc

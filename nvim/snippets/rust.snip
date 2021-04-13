@@ -7,7 +7,7 @@ snippet pr
 snippet prd
     println!("{:?}", 
 
-snippet def
+snippet dd
 options word
     Default::default()
 
@@ -15,12 +15,19 @@ snippet .c
 options word
     .clone()
 
+snippet .cv
+options word
+    .collect::<Vec<_>>()
+
 snippet s
 options word
     self
 
 snippet l
     let 
+
+snippet il
+    if let 
 
 snippet lm
     let mut 
@@ -32,14 +39,23 @@ options word
 snippet f
     fn 
 
-snippet pf
-    pub fn 
-
 snippet p
     pub 
 
+snippet pf
+    pub fn 
+
+snippet ps
+    pub struct 
+
 snippet pe
     pub enum 
+
+snippet pm
+    pub mod 
+
+snippet pu
+    pub use 
 
 snippet t
     type 
@@ -68,7 +84,7 @@ snippet w
     where 
 
 snippet der
-    #[derive(${1})]
+    #[derive(Debug, Clone, PartialEq, Eq)]
 
 snippet un
     unimplemented!()

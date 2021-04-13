@@ -26,7 +26,6 @@
   "diagnostic.messageTarget": "float",
   "diagnostic.maxWindowHeight": 50,
   "diagnostic.maxWindowWidth": 170,
-  "diagnostic.refreshAfterSave": false,
   "diagnostic.refreshOnInsertMode": false,
 
   "signature.maxWindowHeight": 20,
@@ -41,6 +40,11 @@
   "tsserver.log": "verbose",
 
   "eslint.quiet": true,
+
+  "metals.statusBarEnabled": true,
+  "metals.showInferredType": true,
+  "metals.showImplicitArguments": true,
+  "metals.showImplicitConversionsAndClasses": true,
 
   "rust.clippy_preference": "on"
 }
