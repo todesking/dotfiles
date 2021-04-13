@@ -8,10 +8,10 @@
     call denite#custom#option('_', 'direction', 'topleft')
 
     call denite#custom#source(
-        \ 'file/rec,file_mru,project_file_mru',
-        \ 'converters',
-        \ ['converter/project_name', 'converter/mark_dup']
-        \ )
+       \ 'file/rec,file_mru,project_file_mru',
+       \ 'converters',
+       \ ['converter/project_name', 'converter/mark_dup']
+       \ )
 	call denite#custom#source(
 		\ 'file_rec,file/rec,file_mru,file/mru,project_file_mru,unite,tag',
 		\ 'matchers',
@@ -19,10 +19,10 @@
 		\ )
 
     call denite#custom#var(
-        \ 'file/rec',
-        \ 'command',
-        \ [expand('~/.vim/bin/list_file_rec')]
-        \ )
+       \ 'file/rec',
+       \ 'command',
+       \ [expand('~/.config/nvim/bin/list_file_rec')]
+       \ )
 	" keys {{{
 	nnoremap <silent><C-Q>  <ESC>
 	nnoremap <silent><C-S> :<C-u>call Vimrc_denite_mru_if_available()<CR>

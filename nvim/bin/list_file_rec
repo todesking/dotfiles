@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -e
+
+if [ "$#" != 1 ]; then
+	exit 1
+fi
+
+if [ ! -d "$1" ]; then
+	exit 0
+fi
+
+cd "$1"
+if git rev-parse --show-toplevel > /dev/null 2>&1; then
+	ROOT=$(pwd)
+	git ls-files -o -m -c --exclude-standard | ROOT="$ROOT" awk '{print ENVIRON["ROOT"] "/" $0}'
+else
+	cd - > /dev/null
+	find "$1"
+fi
