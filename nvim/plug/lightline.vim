@@ -70,7 +70,7 @@ scriptencoding utf-8
 	if has('gui_vimr')
 		let g:lightline['separator'] = { 'left': '', 'right': '' }
 		let g:lightline['subseparator'] = { 'left': '', 'right': '' }
-		let g:lightline['colorscheme'] = 'iceberg'
+		let g:lightline['colorscheme'] = 'ayu_light'
 	endif
 	function! Vimrc_statusline_git_branch() abort " {{{
 		let throttle_key = 'Vimrc_statusline_git_branch'
