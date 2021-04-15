@@ -47,7 +47,7 @@
 --regex-Rust=/mod[ \t]+([a-zA-Z0-9_]+) *[<{(;]/\1/M,modules,module definitions/
 --regex-Rust=/(static|const) +([a-zA-Z0-9_]+) *[:=]/\2/c,consts,static constants/
 --regex-Rust=/macro_rules! +([a-zA-Z0-9_]+) *{/\1/d,macros,macro definitions/
---regex-Rust=/impl([ \t\n]*<[^>]*>)?[ \t]+(([a-zA-Z0-9_:]+)[ \t]*(<[^>]*>)?[ \t]+(for)[ \t]+)?([a-zA-Z0-9_]+)/\2 \6/i,impls,trait implementations/
+--regex-Rust=/^[ \t]*impl([ \t\n]*<[^>]*>)?[ \t]+(([a-zA-Z0-9_:]+)[ \t]*(<[^>]*>)?[ \t]+(for)[ \t]+)?([a-zA-Z0-9_]+)/\2 \6/i,impls,trait implementations/
 
 --exclude=target
 --exclude=.git
